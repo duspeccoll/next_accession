@@ -1,0 +1,9 @@
+en:
+  plugins:
+    next_accession:
+      title: Next Accession
+      label: Next Accession
+      actions:
+        generate: Generate ID
+      search:
+        label: Accession Year

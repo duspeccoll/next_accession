@@ -1,0 +1,27 @@
+<%= setup_context :title => "Next Accession ID" %>
+
+<div class="row">
+  <div class="col-md-8">
+    <h2><%= I18n.t("plugins.next_accession.title") %></h2>
+
+	  <%= render_aspace_partial :partial => "shared/flash_messages" %>
+    <%= form_tag({:controller => :next_accession, :action => :generate}, {:id => "resolve_next_accession", :class => "form-search", :method => "GET"}) do |form| %>
+
+    <div class="control-group form-group required">
+      <label class="control-label" for="next-accession-year"><%= I18n.t("plugins.next_accession.search.label") %></label>
+			<div class="controls">
+				<input id="next-accession-year" name="year" type="text" class="input-large" placeholder="Enter the year... "></input>
+				<p>
+					<button type="submit" id="resolve-next-accession-button" class="btn btn-xs btn-primary" title="Submit">
+						<%= image_tag "archivesspace/btn-busy.gif", :class => "btn-busy-icon" %>
+						<%= I18n.t("plugins.next_accession.actions.generate") %>
+					</button>
+				</p>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
+
+<link href="<%= "#{AppConfig[:frontend_prefix]}assets/styles/next_accession.css" %>" media="all" rel="stylesheet" type="text/css"></link>
