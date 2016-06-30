@@ -1,6 +1,6 @@
 class ArchivesSpaceService < Sinatra::Base
 
-  Endpoint.get('/repositories/:repo_id/next_accession')
+  Endpoint.post('/repositories/:repo_id/next_accession')
     .description("Gets the next accession number for the year provided")
     .params(["repo_id", :repo_id],
             ["year", String, "The year in which the accession is generated"])
@@ -15,7 +15,7 @@ class ArchivesSpaceService < Sinatra::Base
       id = id + 1
       next_id = params[:year].concat(".").concat(id.to_s.rjust(3, '0'))
     end
-    json_response(:next => next_id)
+    json_response(:id => next_id)
   end
 
 end
