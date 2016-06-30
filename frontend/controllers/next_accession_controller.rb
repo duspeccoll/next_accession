@@ -7,8 +7,8 @@ class NextAccessionController < ApplicationController
 
 	def generate
 		acc_id = JSONModel::HTTP::post_json("/repositories/#{session[:repo_id]}/next_accession", 'year' => params[:year])['id']
-		
-		return redirect_to(:controller => :accessions, :action => :new, :year => params[:year])
+
+		return redirect_to(:controller => :accessions, :action => :new, :id => acc_id)
 	end
 
 end
