@@ -4,6 +4,8 @@ en:
       title: Next Accession
       label: Next Accession
       actions:
-        generate: Generate ID
-      search:
-        label: Accession Year
+        create: Create Record
+        get_id: Get ID
+      messages:
+        error: "Error creating accession <strong>%{id}</strong>"
+        success: "Accession <strong>%{id}</strong> created"

@@ -1,15 +1,21 @@
-$( function() {
-	function getURLParam(sParam) {
-		var sPageURL = window.location.search.substring(1);
-		var sURLVariables = sPageURL.split('&');
-		for(var i = 0; i < sURLVariables.length; i++) {
-			var sParameterName = sURLVariables[i].split('=');
-			if(sParameterName[0] == sParam) {
-				return sParameterName[1];
-			}
-		}
-	}
+$(function() {
+  var $accessionForm = $("#next_accession_form");
+  var $accessionResults = $("#next_accession_results");
+  var $createAccession = $("#create_accession");
 
-	$("#accession_id_0_").val(getURLParam('acc_id'));
-
+  $accessionForm.ajaxForm({
+    dataType: "json",
+    type: "GET",
+    beforeSubmit: function() {
+      if(!$("#next-accession-year", $accessionForm).val()) {
+        return false;
+      }
+      $(".btn", $accessionForm).attr("disabled", "disabled").addClass("disabled").addClass("busy");
+    },
+    success: function(json) {
+      $(".btn", $accessionForm).removeAttr("disabled").removeClass("disabled").removeClass("busy");
+      $accessionResults.empty();
+      $accessionResults.append(AS.renderTemplate("next_accession_id_template", {id: json["id"]}));
+    }
+  });
 })

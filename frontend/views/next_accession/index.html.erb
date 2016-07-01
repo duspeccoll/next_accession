@@ -1,27 +1,41 @@
-<%= setup_context :title => "Next Accession ID" %>
+<%= setup_context :title => I18n.t("plugins.next_accession.title") %>
 
 <div class="row">
   <div class="col-md-8">
     <h2><%= I18n.t("plugins.next_accession.title") %></h2>
 
 	  <%= render_aspace_partial :partial => "shared/flash_messages" %>
-    <%= form_tag({:controller => :next_accession, :action => :generate}, {:id => "resolve_next_accession", :class => "form-search", :method => "GET"}) do |form| %>
 
-    <div class="control-group form-group required">
-      <label class="control-label" for="next-accession-year"><%= I18n.t("plugins.next_accession.search.label") %></label>
-			<div class="controls">
-				<input id="next-accession-year" name="year" type="text" class="input-large" placeholder="Enter the year... "></input>
-				<p>
-					<button type="submit" id="resolve-next-accession-button" class="btn btn-xs btn-primary" title="Submit">
-						<%= image_tag "archivesspace/btn-busy.gif", :class => "btn-busy-icon" %>
-						<%= I18n.t("plugins.next_accession.actions.generate") %>
-					</button>
-				</p>
+    <div id="next_accession">
+      <%= form_tag({:controller => :next_accession, :action => :get}, {:id => "next_accession_form", :class => "form-search", :method => "GET"}) do |form| %>
+
+      <div class="control-group form-group">
+  			<div class="controls">
+  				<input id="next-accession-year" name="year" type="text" class="input-large" placeholder="Enter the year... "></input>
+					<p>
+            <button type="submit" id="get-accession-id-button" class="btn btn-primary" title="Submit">
+  						<%= image_tag "archivesspace/btn-busy.gif", :class => "btn-busy-icon" %>
+  						<%= I18n.t("plugins.next_accession.actions.get_id") %>
+  					</button>
+          </p>
+        </div>
       </div>
 
-    <% end %>
+      <% end %>
+
+      <div id="next_accession_results"></div>
+
+    </div>
 
   </div>
 </div>
 
+<script src="<%= "#{AppConfig[:frontend_prefix]}assets/next_accession.js" %>"></script>
 <link href="<%= "#{AppConfig[:frontend_prefix]}assets/styles/next_accession.css" %>" media="all" rel="stylesheet" type="text/css"></link>
+
+<div id="next_accession_id_template"><!--
+  <div class="alert alert-info accession_form">
+    <span class="alert-text">The next accession ID is ${id}</span><br />
+    <a href="${APP_PATH}plugins/next_accession/create?id=${id}" class="btn btn-xs btn-primary" id="create-accession"><%= I18n.t("plugins.next_accession.actions.create") %></a>
+  </div>
+--></div>
