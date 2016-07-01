@@ -24,7 +24,7 @@ When the year is provided, an alert displays the next accession ID for that year
 
 ![The new accession. Further edits can be made by clicking the 'Edit button'](http://jackflaps.net/img/next_accession_3.png)
 
-Clicking the "Create Record" button creates a new, minimum viable accession record. Additional edits may be made as you would edit any accession record in ArchivesSpace.
+Clicking the "Create Record" button creates a new, minimum viable accession record. Additional edits may be made by clicking the "Edit" button.
 
 ## Questions
 
