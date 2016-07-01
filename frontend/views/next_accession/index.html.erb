@@ -10,8 +10,9 @@
       <%= form_tag({:controller => :next_accession, :action => :get}, {:id => "next_accession_form", :class => "form-search", :method => "GET"}) do |form| %>
 
       <div class="control-group form-group">
+        <label class="control-label next-accession-control-label" for="next-accession"><%= I18n.t("plugins.next_accession.form_label") %></label>
   			<div class="controls">
-  				<input id="next-accession-year" name="year" type="text" class="input-large" placeholder="Enter the year... "></input>
+  				<input id="next-accession-year" name="year" type="text" class="input-large" placeholder="Enter a year... "></input>
 					<p>
             <button type="submit" id="get-accession-id-button" class="btn btn-primary" title="Submit">
   						<%= image_tag "archivesspace/btn-busy.gif", :class => "btn-busy-icon" %>
