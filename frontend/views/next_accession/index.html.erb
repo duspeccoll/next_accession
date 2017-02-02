@@ -2,41 +2,23 @@
 
 <div class="row">
   <div class="col-md-8">
-    <h2><%= I18n.t("plugins.next_accession.title") %></h2>
-
-	  <%= render_aspace_partial :partial => "shared/flash_messages" %>
-
-    <div id="next_accession">
-      <%= form_tag({:controller => :next_accession, :action => :get}, {:id => "next_accession_form", :class => "form-search", :method => "GET"}) do |form| %>
-
-      <div class="control-group form-group">
-        <label class="control-label next-accession-control-label" for="next-accession"><%= I18n.t("plugins.next_accession.form_label") %></label>
-  			<div class="controls">
-  				<input id="next-accession-year" name="year" type="text" class="input-large" placeholder="Enter a year... "></input>
-					<p>
-            <button type="submit" id="get-accession-id-button" class="btn btn-primary" title="Submit">
-  						<%= image_tag "archivesspace/btn-busy.gif", :class => "btn-busy-icon" %>
-  						<%= I18n.t("plugins.next_accession.actions.get_id") %>
-  					</button>
-          </p>
-        </div>
-      </div>
-
-      <% end %>
-
-      <div id="next_accession_results"></div>
-
-    </div>
-
+    <%= render_aspace_partial :partial => "shared/flash_messages" %>
   </div>
 </div>
 
-<script src="<%= "#{AppConfig[:frontend_prefix]}assets/next_accession.js" %>"></script>
-<link href="<%= "#{AppConfig[:frontend_prefix]}assets/styles/next_accession.css" %>" media="all" rel="stylesheet" type="text/css"></link>
+<div class="row">
+  <div class="col-md-8" style="padding-bottom: 10px;">
+    <h2><%= I18n.t("plugins.next_accession.title") %></h2>
 
-<div id="next_accession_id_template"><!--
-  <div class="alert alert-info accession_form">
-    <span class="alert-text">The next accession ID is ${id}</span><br />
-    <a href="${APP_PATH}plugins/next_accession/create?id=${id}" class="btn btn-xs btn-primary" id="create-accession"><%= I18n.t("plugins.next_accession.actions.create") %></a>
+    <%= form_tag({:controller => :next_accession, :action => :new}, {:class => "form-horizontal", :method => "POST"}) do |form| %>
+
+      <div class="col-md-8 form-group required">
+        <label class="control-label">Year of accession:</label>
+        <input id="next-accession-year" name="year" type="text" class="input-large" placeholder="Enter a year... "></input>
+        <button class="btn btn-sm btn-primary"><%= I18n.t("plugins.next_accession.actions.submit") %></button>
+      </div>
+
+    <% end %>
+
   </div>
---></div>
+</div>

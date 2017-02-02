@@ -3,10 +3,7 @@ en:
     next_accession:
       title: Next Accession
       label: Next Accession
-      form_label: Year of Accession
       actions:
-        create: Create Record
-        get_id: Get ID
+        submit: Submit
       messages:
-        error: "Error creating accession <strong>%{id}</strong>"
         success: "Accession <strong>%{id}</strong> created"
