@@ -26,7 +26,10 @@
         </div>
       </div>
 
-      <button class="btn btn-primary"><%= I18n.t("plugins.next_accession.actions.submit") %></button>
+      <div class="form-actions pull-right">
+        <button class="btn btn-primary"><%= I18n.t("plugins.next_accession.actions.submit") %></button>
+        <%= link_to I18n.t("actions.cancel"), {:controller => :next_accession, :action => :index}, :class => "btn btn-cancel btn-default" %>
+      </div>
 
     <% end %>
 
