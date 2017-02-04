@@ -12,7 +12,7 @@ class NextAccessionController < ApplicationController
 
 	def create
 		response = post_accession(params)
-		
+
 		if response.code == '200'
 			id = ASUtils.json_parse(response.body)['id']
 			flash[:success] = I18n.t("plugins.next_accession.messages.success", :id => params[:id])
@@ -28,12 +28,11 @@ class NextAccessionController < ApplicationController
 
 	def fetch_id(year)
 		response = JSONModel::HTTP::post_form("/repositories/#{session[:repo_id]}/next_accession", {:year => year})
-		if response.code == '200'
-			id = ASUtils.json_parse(response.body)['id']
-			return id
+		json = ASUtils.json_parse(response.body)
+		if json['id']
+			return json['id']
 		else
-			error = ASUtils.json_parse(response.body)['error']
-			flash[:error] = "An error occurred: #{error}"
+			flash[:error] = "#{json['error']}"
 			redirect_to request.referer
 		end
 	end
