@@ -18,7 +18,7 @@ class NextAccessionController < ApplicationController
 			flash[:success] = I18n.t("plugins.next_accession.messages.success", :id => params[:id])
 			redirect_to :controller => :accessions, :action => :show, :id => id
 		else
-			errors = ASUtils.json_parse(response.body)['error']
+			error = ASUtils.json_parse(response.body)['error']
 			flash[:error] = "An error occurred: #{error}"
 			redirect_to request.referer
 		end
