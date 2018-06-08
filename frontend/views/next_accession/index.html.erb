@@ -1,21 +1,28 @@
 <%= setup_context :title => I18n.t("plugins.next_accession.title") %>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <%= render_aspace_partial :partial => "shared/flash_messages" %>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-md-8" style="padding-bottom: 10px;">
+  <div class="col-md-12" style="padding: 30px;">
     <h2><%= I18n.t("plugins.next_accession.title") %></h2>
 
     <%= form_tag({:controller => :next_accession, :action => :new}, {:class => "form-horizontal", :method => "POST"}) do |form| %>
 
-      <div class="col-md-8 form-group required">
-        <label class="control-label">Year of accession:</label>
-        <input id="next-accession-year" name="year" type="text" class="input-large" placeholder="Enter a year... "></input>
-        <button class="btn btn-sm btn-primary"><%= I18n.t("plugins.next_accession.actions.submit") %></button>
+      <div class="form-group required">
+        <label class="control-label col-sm-2" for="year">Accession Year</label>
+        <div class="controls col-sm-4">
+          <input id="next-accession-year" class="form-control" name="year" type="text" placeholder="Enter a year... "></input>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="controls">
+          <button class="btn btn-primary pull-right"><%= I18n.t("plugins.next_accession.actions.submit") %></button>
+        </div>
       </div>
 
     <% end %>
