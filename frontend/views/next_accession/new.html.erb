@@ -1,4 +1,4 @@
-<%= setup_context :title => I18n.t("plugins.next_accession.title") %>
+<%= setup_context :title => "New Accession (#{@id})", :trail => [[I18n.t("plugins.next_accession.title"), {:controller => :next_accession, :action => :index}]] %>
 
 <div class="record-pane">
   <div class="row">
